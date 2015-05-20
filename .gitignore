@@ -1,0 +1,7 @@
+.DS_Store
+*rommon*
+*ram1
+dynamips/*disk*
+dynamips/*ghost*
+dynamips/*bootflash*
+

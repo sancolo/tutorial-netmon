@@ -1,0 +1,35 @@
+May 19 14:52:39.332 HYPERVISOR: Release 0.2.12-amd64/Darwin (tag 2014032722)
+May 19 14:52:39.332 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 52241.
+May 19 14:52:39.483 HYPERVISOR: exec_cmd: hypervisor version 
+May 19 14:52:39.484 HYPERVISOR: exec_cmd: hypervisor uuid 
+May 19 14:52:39.485 HYPERVISOR: exec_cmd: hypervisor working_dir /Users/carlos/Research/lab-peering-tutorial-gns3/lab-peering-tutorial/project-files/dynamips 
+May 19 14:52:39.485 GENERAL: working_dir=/Users/carlos/Research/lab-peering-tutorial-gns3/lab-peering-tutorial/project-files/dynamips
+May 19 14:52:39.487 HYPERVISOR: exec_cmd: vm create R3 4 c7200 
+May 19 14:52:39.512 VM: VM R3 created.
+May 19 14:52:39.521 HYPERVISOR: exec_cmd: vm set_con_tcp_port R3 2004 
+May 19 14:52:39.522 HYPERVISOR: exec_cmd: c7200 get_mac_addr R3 
+May 19 14:52:39.523 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:39.524 HYPERVISOR: exec_cmd: vm slot_add_binding R3 0 0 C7200-IO-FE 
+May 19 14:52:39.525 HYPERVISOR: exec_cmd: vm set_nvram R3 512 
+May 19 14:52:39.526 HYPERVISOR: exec_cmd: vm set_ram R3 512 
+May 19 14:52:39.527 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:39.528 HYPERVISOR: exec_cmd: vm slot_add_binding R3 2 0 PA-8T 
+May 19 14:52:39.650 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:39.652 HYPERVISOR: exec_cmd: vm slot_add_binding R3 1 0 PA-2FE-TX 
+May 19 14:52:39.654 HYPERVISOR: exec_cmd: vm set_ios R3 /Users/carlos/GNS3/images/IOS/c7200-adventerprisek9-mz.152-4.S3.bin 
+May 19 14:52:39.655 HYPERVISOR: exec_cmd: c7200 set_mac_addr R3 ca04.4c27.0000 
+May 19 14:52:39.656 HYPERVISOR: exec_cmd: vm set_disk0 R3 0 
+May 19 14:52:39.658 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:39.660 HYPERVISOR: exec_cmd: vm set_idle_pc R3 0x62f1289c 
+May 19 14:52:39.662 HYPERVISOR: exec_cmd: vm set_config R3 configs/i4_startup-config.cfg 
+May 19 14:52:39.663 HYPERVISOR: exec_cmd: vm set_config R3 configs/i4_startup-config.cfg configs/i4_private-config.cfg 
+May 19 14:52:41.851 HYPERVISOR: exec_cmd: vm set_ghost_status R3 2 
+May 19 14:52:41.852 HYPERVISOR: exec_cmd: vm set_ghost_file R3 c7200-adventerprisek9-mz.152-4.S3.bin-512.ghost 
+May 19 14:52:42.106 HYPERVISOR: exec_cmd: nio create_udp udp-e87098c3-7f99-48f2-ad24-fb5d256a2b2b 10004 127.0.0.1 10005 
+May 19 14:52:42.134 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R3 0 0 udp-e87098c3-7f99-48f2-ad24-fb5d256a2b2b 
+May 19 14:52:42.136 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:44.126 HYPERVISOR: exec_cmd: vm get_status R3 
+May 19 14:52:44.136 HYPERVISOR: exec_cmd: vm start R3 
+May 19 16:12:16.108 HYPERVISOR: exec_cmd: vm extract_config R3 
+May 19 16:12:20.183 HYPERVISOR: exec_cmd: vm extract_config R3 
+May 19 16:12:36.211 HYPERVISOR: exec_cmd: vm extract_config R3 
