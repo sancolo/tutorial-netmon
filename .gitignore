@@ -2,6 +2,7 @@
 *rommon*
 *ram1
 dynamips/*disk*
+dynamips/*txt
 dynamips/*ghost*
 dynamips/*bootflash*
 
