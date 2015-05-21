@@ -43,3 +43,4 @@ May 19 14:52:41.972 HYPERVISOR: exec_cmd: vm get_status R2
 May 19 14:52:44.124 HYPERVISOR: exec_cmd: vm get_status R2 
 May 19 14:52:44.135 HYPERVISOR: exec_cmd: vm start R2 
 May 19 16:12:36.210 HYPERVISOR: exec_cmd: vm extract_config R2 
+May 20 18:14:24.847 HYPERVISOR: exec_cmd: vm extract_config R2 

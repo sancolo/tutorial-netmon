@@ -37,3 +37,4 @@ May 19 15:49:01.921 HYPERVISOR: exec_cmd: vm slot_disable_nio RouteServer 1 0
 May 19 15:49:01.935 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding RouteServer 1 0 
 May 19 15:49:01.940 HYPERVISOR: exec_cmd: nio delete udp-0e313ab6-21b9-4064-b959-5754d4ba1c24 
 May 19 16:12:36.215 HYPERVISOR: exec_cmd: vm extract_config RouteServer 
+May 20 18:14:24.858 HYPERVISOR: exec_cmd: vm extract_config RouteServer 

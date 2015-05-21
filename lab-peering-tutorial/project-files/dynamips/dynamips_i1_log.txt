@@ -35,3 +35,5 @@ May 19 14:52:44.137 HYPERVISOR: exec_cmd: vm start R1
 May 19 16:12:16.132 HYPERVISOR: exec_cmd: vm extract_config R1 
 May 19 16:12:20.185 HYPERVISOR: exec_cmd: vm extract_config R1 
 May 19 16:12:36.217 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 18:14:09.507 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 18:14:24.856 HYPERVISOR: exec_cmd: vm extract_config R1 
