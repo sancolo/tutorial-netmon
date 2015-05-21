@@ -2,7 +2,8 @@
 <!-- color: #000 -->
 <!-- font: frutiger -->
 
-# Monitoring Peering Setups
+# **Monitoreo de Sitios de Peering**
+![](slide1-backdrop.png)
 
 ***
 
@@ -33,6 +34,7 @@ Una falla (o falta) es un evento adverso en la red. La caida de un enlace, un re
 ***
 
 # Gestion de configuracion
+
 
 Copiar, almacenar y versionar configuracion de dispositivos.
 
@@ -166,3 +168,189 @@ opaque: tipo reservado para el pasaje de datos arbitrarios.
 
 ***
 
+# SNMP: ¿Que cosas se pueden hacer con SNMP?
+
+* Chequear el estado de las interfaces
+* Medir trafico
+* Medir utilizacion de CPU
+* Obtener la tabla de enrutamiento
+
+***
+
+# SNMP: Medicion de trafico
+
+## ifDescr y ifIndex
+
+```
+root@vy-64:~# snmpwalk -v1 -c public 10.0.1.254 ifDescr
+IF-MIB::ifDescr.1 = STRING: FastEthernet0/0
+IF-MIB::ifDescr.2 = STRING: FastEthernet1/0
+IF-MIB::ifDescr.3 = STRING: FastEthernet1/1
+IF-MIB::ifDescr.4 = STRING: Serial2/0
+```
+
+***
+
+# SNMP: Medicion de trafico
+
+```
+root@vy:~# snmpwalk -v1 -c public 10.0.1.254 ifOutOctets
+IF-MIB::ifOutOctets.1 = Counter32: 1875400
+IF-MIB::ifOutOctets.2 = Counter32: 0
+IF-MIB::ifOutOctets.3 = Counter32: 0
+```
+
+***
+
+# SNMP: Demo **snmpwalk**
+
+_Wish me luck!_
+
+***
+
+# SNMP: Medicion de trafico
+
+![fit,inline](cacti.png)
+
+Utilizando herramientas como [Cacti](http://www.cacti.net) podemos graficar diferentes variables, identificando tendencias e incluso programando alarmas de acuerdo a diferentes valores.
+
+***
+
+# SNMP: Demo **[Cacti](http://www.cacti.net)** 
+
+_Oh, Margot!_
+
+***
+
+# SNMP: Estado de las sesiones BGP
+
+```
+root@vy-64:~# snmpwalk -v1 -c public 10.0.1.254 bgpPeerState
+BGP4-MIB::bgpPeerState.10.0.1.1 = INTEGER: established(6)
+BGP4-MIB::bgpPeerState.10.0.1.2 = INTEGER: established(6)
+BGP4-MIB::bgpPeerState.10.0.1.3 = INTEGER: established(6)
+BGP4-MIB::bgpPeerState.10.0.1.4 = INTEGER: established(6)
+```
+
+***
+
+# **NetFlow**
+![](slide1-backdrop.png)
+
+*** 
+
+# **NetFlow** Medicion de flujos de trafico
+
+**Netflow** es un mecanismo de monitoreo de flujos de trafico, originalmente creado por Cisco pero luego estandarizado por el [IETF](http://www.ietf.org).
+
+Permite determinar con precisión los intercambios de trafico entre los diferentes puntos de la red (_matriz de tráfico_).
+
+¿Que es un flujo de trafico?
+
+***
+
+# Netflow
+
+Cisco, para NetFlow v5 define un flujo como una secuencia unidireccional de paquetes que comparten los mismos:
+
+* Interfaz de entrada (SNMP ifIndex)
+* Direccion IP de origen
+* Direccion IP de destino
+* Protocolo IP (tcp, udp, icmp, etc.)
+* Puerto (udp,tcp) de origen
+* Puerto (udp,tcp) de destino o tipo para icmp
+* IP ToS
+
+***
+
+# Netflow
+
+![fit,inline](netflow-arch.png)
+
+***
+
+# NetFlow: Herramientas
+
+* Pagas
+	* Muchas, para elegir
+* Open Source
+	* flow-tools
+	* nfdump
+
+***
+
+# NetFlow: Configuracion base de un colector
+
+Utilizando Vagrant se puede construir un colector muy básico per funcional de NetFlow.
+
+***
+
+# NetFlow: Instalacion de un colector NF
+
+(Utilizando [Vagrant](http://vagrantup.com))
+
+```
+  # Ejecutar el shell
+  config.vm.provision "shell", inline: <<-SHELL
+  	 sudo sed -i "/^# deb .* multiverse$/ s/^# //" /etc/apt/sources.list 
+     sudo apt-get update
+     sudo apt-get install -y apache2
+     sudo apt-get install -y flow-tools
+     sudo apt-get install -y snmp snmpd
+     sudo apt-get install -y bridge-utils
+     sudo apt-get install -y openvpn
+     sudo apt-get install -y snmp-mibs-downloader
+     sudo download-mibs
+     #
+     sudo mkdir -p /var/flow/routeserver
+     sudo mkdir -p /var/flow/R1
+     sudo mkdir -p /var/flow/R4
+	 #
+	 sudo /etc/init.d/flow-capture restart
+     #
+     sudo ping -f -c10 10.0.1.254
+  SHELL
+
+```
+
+***
+
+# NetFlow: Captura de flujos
+
+```
+# Configuration for flow-capture
+# Capture flows from router at 10.0.1.*, listening at port 999x.
+# Store flows in /var/flow/myrouter.
+-w /var/flow/routeserver 0/10.0.1.254/9996
+-w /var/flow/R1 0/10.0.1.1/9997
+-w /var/flow/R4 0/10.0.1.4/9998
+```
+
+***
+
+# NetFlow: flow-print
+
+```
+root@vy-64:~# flow-cat /var/flow/R1 | flow-print | head -20
+srcIP            dstIP            prot  srcPort  dstPort  octets      packets
+10.0.1.253       10.0.1.1         1     0        771      128         1         
+10.0.1.254       10.0.1.1         6     179      31510    99          2         
+10.0.1.254       10.0.1.1         6     179      31510    99          2         
+192.168.30.1     10.0.1.1         1     0        0        500         5         
+10.0.1.254       10.0.1.1         6     179      31510    139         3         
+10.0.1.254       10.0.1.1         6     179      31510    99          2         
+10.0.1.254       10.0.1.1         6     179      31510    99          2         
+10.0.1.254       10.0.1.1         6     179      31510    99          2         
+10.0.1.254       10.0.1.1         6     179      31510    40          1     
+```
+
+***
+
+# NetFlow: Demo
+
+_Watch out for the demo effect!_
+
+***
+
+# **¡Muchas Gracias!**
+![](slide1-backdrop.png)
