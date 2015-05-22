@@ -418,3 +418,41 @@ May 19 17:02:18.969 ROM: trying to set bootvar 'WARM_REBOOT=FALSE'
 May 19 17:02:19.568 CPU0: MP_FPGA: read from addr 0x0, pc=0x62a2df70
 May 20 08:31:49.271 CPU0: MP_FPGA: read from addr 0x0, pc=0x62a2df70
 May 20 08:34:54.378 CPU0: MP_FPGA: read from addr 0x0, pc=0x62a2df70
+May 22 09:19:20.040 C7200_STOP: stopping simulation.
+May 22 09:19:20.042 CPU0: CPU_STATE: Halting CPU (old state=0)...
+May 22 09:19:20.186 VM: shutdown procedure engaged.
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "io_fpga"
+May 22 09:19:20.186 DEVICE: Removal of device io_fpga, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "mp_fpga"
+May 22 09:19:20.186 DEVICE: Removal of device mp_fpga, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "clpd6729"
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "mem_bswap"
+May 22 09:19:20.186 DEVICE: Removal of device mem_bswap, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "rom"
+May 22 09:19:20.186 DEVICE: Removal of device rom, fd=-1, host_addr=0x0, flags=2
+May 22 09:19:20.186 VM_OBJECT: Shutdown of object "ram"
+May 22 09:19:20.186 DEVICE: Removal of device ram, fd=13, host_addr=0x11a06c000, flags=34
+May 22 09:19:20.186 MMAP: unmapping of device 'ram', fd=13, host_addr=0x11a06c000, len=0x10000000
+May 22 09:19:20.206 VM_OBJECT: Shutdown of object "gt64120"
+May 22 09:19:20.206 DEVICE: Removal of device gt64120, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:20.206 VM_OBJECT: Shutdown of object "ram1"
+May 22 09:19:20.206 DEVICE: Removal of device ram1, fd=12, host_addr=0x10a06c000, flags=2
+May 22 09:19:20.206 MMAP: unmapping of device 'ram1', fd=12, host_addr=0x10a06c000, len=0x10000000
+May 22 09:19:24.024 VM_OBJECT: Shutdown of object "zero"
+May 22 09:19:24.024 DEVICE: Removal of device zero, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:24.024 VM_OBJECT: Shutdown of object "nvram"
+May 22 09:19:24.024 DEVICE: Removal of device nvram, fd=11, host_addr=0x109fec000, flags=9
+May 22 09:19:24.024 MMAP: unmapping of device 'nvram', fd=11, host_addr=0x109fec000, len=0x80000
+May 22 09:19:24.102 VM_OBJECT: Shutdown of object "bootflash"
+May 22 09:19:24.160 DEVICE: Removal of device bootflash, fd=10, host_addr=0x1097ec000, flags=1
+May 22 09:19:24.160 MMAP: unmapping of device 'bootflash', fd=10, host_addr=0x1097ec000, len=0x800000
+May 22 09:19:24.265 VM_OBJECT: Shutdown of object "remote_ctrl"
+May 22 09:19:24.265 DEVICE: Removal of device remote_ctrl, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:24.265 VM: removing PCI busses.
+May 22 09:19:24.292 DEVICE: Removal of device pci_io, fd=-1, host_addr=0x0, flags=0
+May 22 09:19:24.292 VM: deleting VTTY.
+May 22 09:19:24.292 VTTY: Console port: closing FD 9
+May 22 09:19:24.292 VM: deleting system CPUs.
+May 22 09:19:24.292 CPU0: CPU_STATE: Halting CPU (old state=1)...
+May 22 09:19:24.388 VM: shutdown procedure completed.
+May 22 09:19:30.616 VM: trying to shutdown an inactive VM.
