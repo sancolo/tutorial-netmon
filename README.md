@@ -1,7 +1,12 @@
-# Tutorial de Peering
+# Tutorial de Monitoreo de Redes
 
-## Lab de gestion de red
+Santiago Aggio
+Juan Pablo Cuello
+Carlos Martinez
+
+## Labs de gestion de red
 
 * Peering publico
 * Varios ASes
 * Medidas de trafico entre ellos
+* Netflow Collector
